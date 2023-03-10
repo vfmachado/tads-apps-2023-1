@@ -6,11 +6,21 @@ import { GStyles } from '../globalStyles';
 
 export default function HomeScreen({ navigation }) {
     return (
-        <View style={GStyles.container}>
+        <View style={GStyles.container2}>
             <Text>Tela Home</Text>
 
             <CustomButton 
-                titulo={"GO TELA PROFILE"}
+                titulo={"SIGNUP"}
+                onPress={() => {
+                    // alert("QUERIA IR PARA A TELA PROFILE");
+                    navigation.navigate('Signup', {
+                        // username: 'Vinicius'
+                    })
+                }}
+            />
+
+            <CustomButton 
+                titulo={"PROFILE"}
                 onPress={() => {
                     // alert("QUERIA IR PARA A TELA PROFILE");
                     navigation.navigate('Profile', {

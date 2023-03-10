@@ -17,7 +17,7 @@ export default function App() {
   }, []);
 
   return (
-    <View style={GStyles.container}>
+    <>
       {viewStack ?
         <StackScreens />
         :
@@ -60,7 +60,7 @@ export default function App() {
           <StatusBar style="auto" />
         </>
       }
-    </View>
+    </>
   );
 }
 
