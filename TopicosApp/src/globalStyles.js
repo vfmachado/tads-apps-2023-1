@@ -3,6 +3,7 @@ import { StyleSheet } from "react-native";
 export const GStyles = StyleSheet.create({
     container: {
       display: 'flex',
+      flexDirection: 'column',
       flex: 1,
       backgroundColor: '#fff',
       alignItems: 'center',

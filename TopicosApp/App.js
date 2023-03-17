@@ -21,7 +21,7 @@ export default function App() {
       {viewStack ?
         <StackScreens />
         :
-        <>
+        <View style={GStyles.container}>
           <Text style={GStyles.mb10}>NUMERO DE CLIQUES</Text>
           <Text style={GStyles.mb10}>{contador}</Text>
           {/* <Button
@@ -45,7 +45,9 @@ export default function App() {
             titulo={"+ COMPONENTIZADO"}
             onPress={(evt) => {
               console.log("Clicou no botão");
+              console.log("CONTADOR ANTES DO STATE: " + contador);
               setContador(contador + 1);
+              console.log("CONTADOR DEPOIS DO STATE: " + contador);
             }}
           />
 
@@ -58,7 +60,7 @@ export default function App() {
           />
 
           <StatusBar style="auto" />
-        </>
+        </View>
       }
     </>
   );
