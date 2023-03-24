@@ -1,10 +1,11 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Text, TextInput, ActivityIndicator } from 'react-native';
 import { View } from 'react-native-web';
 import CustomButton from '../components/CustomButton';
 import MeuInput from '../components/MeuInput';
 import { GStyles } from '../globalStyles';
+import BuscaNomeAleat, { CepSearch, ConectaLocalhost } from '../services/starwars';
 
 export default function SignupScreen({ navigation, route }) {
     // EXERCICIO MASTER - RESOLVER O PROBLEMA DOS CONTAINERS!!!
@@ -16,28 +17,42 @@ export default function SignupScreen({ navigation, route }) {
         password: ''
     })
 
+    const [person, setPerson] = useState({
+        name: '',
+        age: ''
+    })
+
     const [loading, setLoading] = useState(false);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     
-    // CREATE A FUNCTION TO FETCH A RANDOM PERSON FROM swapi.dev USING AXIOS
-  const fetchPerson = async () => {
-    // get a random number between 1 and 50
-    const randomPersonId = Math.floor(Math.random() * 50) + 1;
-    const response = await axios.get('https://swapi.dev/api/people/' + randomPersonId);
-    setName(response.data.name);
-  }
+    const [ location, setLocation] = useState('LOCATION ');
 
+    useEffect(() => {
+        async function fetchMyAPI() {
+            if (email.length == 8) {
+                const resultado = await CepSearch(email);
+                setLocation(resultado);
+            }
+        }
+        fetchMyAPI();
+    }, [email]);
+
+    // CREATE A FUNCTION TO FETCH A RANDOM PERSON FROM swapi.dev USING AXIOS
   useEffect(() => {
     setLoading(false);
   }, [name]);
 
   useEffect(() => {
     setLoading(true);
-    setTimeout(() => {
-        fetchPerson()
-    }, 2000);
+    ConectaLocalhost();
+    setTimeout(async () => {
+        const result = await BuscaNomeAleat();
+        console.log({ result })
+        setName(result.name);
+        setPerson(result)
+    }, 1);
   }, []);
 
 
@@ -55,6 +70,16 @@ export default function SignupScreen({ navigation, route }) {
                 />
                 }
             </View>
+
+            <View style={GStyles.mb10}>
+                <Text>Idade provavel</Text>
+                { loading ? <ActivityIndicator /> :
+                <MeuInput 
+                    value={person.age}
+                    change={(text) => setName(text)}
+                />
+                }
+            </View>
             
             <View style={GStyles.mb10}>
                 <Text>DIGITE SEU EMAIL</Text>
@@ -67,6 +92,9 @@ export default function SignupScreen({ navigation, route }) {
                 />
             </View>
 
+            <View>
+                <Text>{JSON.stringify(location)}</Text>
+            </View>
 
             {/* EXERCICIO - MOSTRAR **** NA SENHA AO INVES DO TEXTO */}
             <View style={GStyles.mb10}>
