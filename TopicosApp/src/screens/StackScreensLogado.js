@@ -8,22 +8,15 @@ import SignupScreen from './SignupScreen';
 import SignIn from './SignIn';
 const Stack = createNativeStackNavigator();
 
-export const Sreens = {
-    HOME: 'Home'
-}
 
-export const StackScreens = () => {
+export const StackScreensLogado = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator >
         <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{title: 'Welcome'}}
+          name="Dashboard"
+          component={ProfileScreen}
         />
-        {/* <Stack.Screen name="Profile" component={ProfileScreen} /> */}
-        <Stack.Screen name="SignIn" component={SignIn} />
-        <Stack.Screen name="Signup" component={SignupScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

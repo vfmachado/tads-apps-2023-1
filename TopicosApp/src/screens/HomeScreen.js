@@ -4,6 +4,8 @@ import { View } from 'react-native-web';
 import CustomButton from '../components/CustomButton';
 import { ContadorContext } from '../contexts/contadorContext';
 import { GStyles } from '../globalStyles';
+import { StackScreensLogado } from './StackScreensLogado';
+import { StackScreens } from './StackScreens';
 
 export default function HomeScreen({ navigation }) {
 
@@ -17,23 +19,32 @@ export default function HomeScreen({ navigation }) {
     }, [context.contador]);
 
     return (
+        
         <View style={GStyles.container2}>
             <Text>Tela Home</Text>
             <Text>{context.contador}</Text>
 
+            <Text>USUARIO: {context.user?.name}</Text>
 
-            <CustomButton 
+            <CustomButton
                 titulo={"SIGNUP"}
                 onPress={() => {
                     // alert("QUERIA IR PARA A TELA PROFILE");
-                    // navigation.navigate('Signup', {
-                    //     // username: 'Vinicius'
-                    // })
-                    context.incrementar();
+                    navigation.navigate('Signup', {
+                        // username: 'Vinicius'
+                    })
+                    // context.incrementar();
                 }}
             />
 
-            <CustomButton 
+            <CustomButton
+                titulo={"SIGNIN"}
+                onPress={() => {
+                   navigation.navigate('SignIn')
+                }}
+            />
+
+            <CustomButton
                 titulo={"PROFILE"}
                 onPress={() => {
                     // alert("QUERIA IR PARA A TELA PROFILE");
@@ -43,5 +54,6 @@ export default function HomeScreen({ navigation }) {
                 }}
             />
         </View>
-    )   
+            
+    )
 }

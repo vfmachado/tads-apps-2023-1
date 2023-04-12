@@ -6,6 +6,7 @@ import CustomButton from '../components/CustomButton';
 import MeuInput from '../components/MeuInput';
 import { GStyles } from '../globalStyles';
 import BuscaNomeAleat, { CepSearch, ConectaLocalhost } from '../services/starwars';
+import CadastraUsuario from '../services/cadastro';
 
 export default function SignupScreen({ navigation, route }) {
     // EXERCICIO MASTER - RESOLVER O PROBLEMA DOS CONTAINERS!!!
@@ -55,6 +56,17 @@ export default function SignupScreen({ navigation, route }) {
     }, 1);
   }, []);
 
+  const handleSignup = async () => {
+    try {
+        await CadastraUsuario(name, email, password);
+        alert('USUARIO CADASTRADO COM SUCESSO');
+        navigation.navigate('Home')
+    } catch (error) { 
+        console.log(' ERRO CADASTRO ')
+        console.log({ error })
+        alert('ERRO AO CADASTRAR')
+    }
+  }
 
     return (
         <View style={GStyles.container}>
@@ -71,7 +83,7 @@ export default function SignupScreen({ navigation, route }) {
                 }
             </View>
 
-            <View style={GStyles.mb10}>
+            {/* <View style={GStyles.mb10}>
                 <Text>Idade provavel</Text>
                 { loading ? <ActivityIndicator /> :
                 <MeuInput 
@@ -79,7 +91,7 @@ export default function SignupScreen({ navigation, route }) {
                     change={(text) => setName(text)}
                 />
                 }
-            </View>
+            </View> */}
             
             <View style={GStyles.mb10}>
                 <Text>DIGITE SEU EMAIL</Text>
@@ -114,6 +126,7 @@ export default function SignupScreen({ navigation, route }) {
                     alert(JSON.stringify({
                         name, email, password
                     }));
+                    handleSignup();
                 }}
             />
         </View>
