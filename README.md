@@ -1,6 +1,20 @@
 # TADS IFRS - Rio Grande 2023 - 1º Semestre
 # TÓPICOS EM DESENVOLVIMENTO DE APLICATIVOS
 
+## TRABALHO I
+
+https://docs.google.com/document/d/e/2PACX-1vQEFk1PjjwiUtc6KZw4DaKsBLHrLIaq_jIuc43ejK0AI5FzO_LvkHEkafd55HeN5dShb7YOYkUbgEBv/pub
+
+Entrega: 2 Semanas e 3 dias
+28/04 - Prévia em aula
+31/04 - Entrega final
+
+
+## TRABALHO II
+
+## TRABALHO III
+
+
 # CRONOGRAMA
 
 ## Semana 01
