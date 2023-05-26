@@ -16,7 +16,9 @@ Compartilhar o projeto com vfmachado ou por email vinicius.machado@riogrande.ifr
 
 ## TRABALHO II
 
-## TRABALHO III
+https://docs.google.com/document/d/1lJUSoNWp50fqi_L1KT6fk5syu2-txjnoiypXigULA9Y/edit?usp=sharing
+
+16/06 - Entrega via email;
 
 
 # CRONOGRAMA
